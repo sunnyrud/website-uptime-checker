@@ -28,10 +28,9 @@ def send_notification():
         smtp.login(EMAIL_ADDRESS, EMAIL_PASSWORD)
         smtp.send_message(msg)
 
-while True:
-    if not check_website(URL):
-        send_notification()
-        print("Website down! Notification sent.")
-    else:
-        print("Website up.")
-    time.sleep(60)  # check every minute
+if not check_website(URL):
+    send_notification()
+    print("Website down! Notification sent.")
+else:
+    print("Website up.")
+
